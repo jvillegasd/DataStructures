@@ -1,0 +1,70 @@
+
+    private void dibujarArbol(Graphics g, NodoBST actual, int xo, int yo, int nivel, double tam) {
+        if (actual != null) {
+            if (nivel == 0) {
+                tam = tam + 40;
+            } else if (nivel > 0 && nivel < 2) {
+                tam = 20;
+            }
+            if (nivel > 2 && nivel <= 3) {
+                tam = 10;
+            }
+            if (nivel > 2 && tam > 2) {
+                tam = tam - 2.7;
+            }
+            if (actual.getHi() != null) {
+                int xf;
+                int yf = yo + (int) (Math.sin(Math.PI / 4) * Math.pow(2, nivel) * tam);
+                if (nivel > 0) {
+                    xf = xo - (int) (Math.cos(Math.PI / 4) + (numHijos(actual.getHi(), 1) * 10 - 10));
+                }else{
+                    xf = xo - (int) (Math.cos(Math.PI / 4) + (numHijos(actual.getHi(), 1) * 23));//Para que quede bonito la linea que parte de la raiz
+                }
+                g.setColor(Color.BLACK);
+                g.drawLine(xo + 10, yo + 10, xf, yf);
+                dibujarArbol(g, actual.getHi(), xf - 10, yf - 10, nivel + 1, tam);
+            }
+            if (actual.getHd() != null) {
+                int xf;
+                int yf = yo + (int) (Math.sin(Math.PI / 4) * Math.pow(2, nivel) * tam);
+                if (nivel > 0) {
+                    xf = xo + (int) (Math.cos(Math.PI / 4) + (numHijos(actual.getHd().getHi(), 1) * 20));
+                } else {
+                    xf = xo + (int) (Math.cos(Math.PI / 4) + (numHijos(actual.getHd(), 1) * 20) + 19);//Para que quede bonito la linea que parte de la raiz
+                }
+                g.setColor(Color.BLACK);
+                g.drawLine(xo + 10, yo + 10, xf, yf);
+                dibujarArbol(g, actual.getHd(), xf - 10, yf - 10, nivel + 1, tam);
+            }
+            g.setColor(Color.RED);
+            g.fillOval(xo, yo, 20, 20);
+            g.setColor(Color.WHITE);
+            if (actual.getDato() > 9 && actual.getDato() < 100) {
+                g.drawString(actual.getDato() + "", xo + 3, yo + 15);
+            } else if (actual.getDato() >= 100) {
+                Font fuente = g.getFont();
+                Font nuevafuente = new Font(Font.SANS_SERIF, Font.PLAIN, 11);
+                g.setFont(nuevafuente);
+                g.drawString(actual.getDato() + "", xo + 2, yo + 15);
+                g.setFont(fuente);
+            } else {
+                g.drawString(actual.getDato() + "", xo + 7, yo + 15);
+            }
+        }
+    }
+
+    /*Yo tengo en cuenta cuantos hijos tiene cada subarbol para poder separarlo, por eso si voy a dibujar un subarbol izquierdo
+      tengo en cuenta los hijos que tiene en su rama derecha, y viceversa si se trada e un subarbol derecho*/
+    private int numHijos(NodoBST subraiz, int contador) {
+        if (subraiz != null) {
+            if (subraiz.getHd() != null) {
+                contador++;
+                numHijos(subraiz.getHd(), contador);
+            }
+            if (subraiz.getHi() != null) {
+                contador++;
+                numHijos(subraiz.getHi(), contador);
+            }
+        }
+        return contador;
+    }

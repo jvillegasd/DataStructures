@@ -90,6 +90,7 @@ public class Ordenamientos {
 
     public int[] quickSort(int[] vector, int primero, int ultimo, int tam) {
         resultados.clear();
+        quickSortR.clear();
         if (ultimo - primero < 2) {
             return vector;
         }

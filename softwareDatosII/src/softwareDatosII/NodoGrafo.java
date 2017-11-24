@@ -61,7 +61,7 @@ public class NodoGrafo {
         esVisitado = false;
     }
 
-    public void startBFS(int vertexNumber) {
+    public void startBFS() {
         distancia = Integer.MAX_VALUE;
         esVisitado = false;
         esDescubierto = false;

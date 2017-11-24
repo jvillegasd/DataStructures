@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
 
-public class ArbolBST { //Arbol binario de busqueda, lo manejo como un grafo no dirigido
+public class ArbolBST { //Arbol binario de busqueda, lo manejo como un grafo dirigido
 
     private NodoBST raiz = null;
     private NodoBST aux = null;
@@ -13,7 +13,7 @@ public class ArbolBST { //Arbol binario de busqueda, lo manejo como un grafo no 
 
     public ArbolBST(int dato, JPanel panelDibujo) {
         this.panelDibujo = panelDibujo;
-        arbolG = new Grafo(false, panelDibujo);
+        arbolG = new Grafo(true, panelDibujo);
         this.insertarNodo(dato);
 
     }
@@ -213,6 +213,6 @@ public class ArbolBST { //Arbol binario de busqueda, lo manejo como un grafo no 
     
     public void BFS(NodoBST nodoI){
         NodoGrafo nodoInicial = arbolG.getNodoGrafo(nodoI.getDato() + "");
-        arbolG.bfsAlgorithm(nodoInicial, this);
+        arbolG.BFS(nodoInicial, this);
     }
 }

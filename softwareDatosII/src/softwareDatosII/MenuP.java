@@ -337,7 +337,10 @@ public class MenuP extends javax.swing.JFrame {
             if (arbolBST != null) {
                 arbolBST.repintarArbol(arbolBST.getRaiz());
             }
-        }else if(modoOrd) tam = 0;
+        }else if(modoOrd){
+            tam = 0;
+            panelDibujo.getGraphics().clearRect(0, 0, panelDibujo.getWidth(), panelDibujo.getHeight());
+        }
     }//GEN-LAST:event_resetBtMouseClicked
 
     private void BFSRBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BFSRBMouseClicked

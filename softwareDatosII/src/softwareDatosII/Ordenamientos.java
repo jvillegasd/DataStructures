@@ -90,12 +90,13 @@ public class Ordenamientos {
 
     public int[] quickSort(int[] vector, int primero, int ultimo, int tam) {
         resultados.clear();
-        quickSortR.clear();
         if (ultimo - primero < 2) {
             return vector;
         }
+        quickSortR.clear();
         vector = qs(vector, primero, ultimo, tam);
         imprimirResultados(tam);
+        
         return vector;
     }
 
@@ -142,7 +143,22 @@ public class Ordenamientos {
         }
         for (int i = 0; i < length; i++) {
             if (!quickSortR.isEmpty()) {
-                iteracion = quickSortR.get(i).substring(0, tam * 2) + "]";
+                iteracion = "[";
+                int subTam = 0;
+                for (int j = 0; j < 10000; j++) {
+                    if(Character.isDigit(quickSortR.get(i).charAt(j))){
+                        while(Character.isDigit(quickSortR.get(i).charAt(j))){
+                            iteracion += quickSortR.get(i).charAt(j);
+                            j++;
+                        }
+                        subTam++;
+                        if(subTam != tam) iteracion += ", ";
+                    }
+                    if(subTam == tam){
+                        iteracion += "]";
+                        break;
+                    }
+                }
             } else {
                 iteracion = Arrays.toString(resultados.get(i));
             }

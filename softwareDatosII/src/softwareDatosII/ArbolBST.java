@@ -23,7 +23,7 @@ public class ArbolBST { //Arbol binario de busqueda, lo manejo como un grafo dir
         arbolG.insertarNodo(dato + "");
         if (this.raiz == null) { //Añadir la raiz y pintarla
             this.raiz = nuevonodo;
-            this.raiz.setPosX(panelDibujo.getWidth() / 2);
+            this.raiz.setPosX(panelDibujo.getWidth() / 2 - 10);
             this.raiz.setPosY(0);
             this.raiz.setNivel(0);
             dibujarArbol(this.raiz, false);

@@ -101,7 +101,7 @@ public class MenuP extends javax.swing.JFrame {
         panelDibujo.setLayout(panelDibujoLayout);
         panelDibujoLayout.setHorizontalGroup(
             panelDibujoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 351, Short.MAX_VALUE)
+            .addGap(0, 354, Short.MAX_VALUE)
         );
         panelDibujoLayout.setVerticalGroup(
             panelDibujoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,9 +193,6 @@ public class MenuP extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(panelDibujo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(73, 73, 73)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -215,8 +212,11 @@ public class MenuP extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(insertSRB)
                                 .addGap(18, 18, 18)
-                                .addComponent(selectSRB)))))
-                .addContainerGap(26, Short.MAX_VALUE))
+                                .addComponent(selectSRB))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(panelDibujo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -3,7 +3,9 @@ package softwareDatosII;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import javax.swing.JPanel;
 
 public class Grafo { //Mi implementacion de grafos, el codigo inicialmente lo hize en C#
@@ -91,8 +93,8 @@ public class Grafo { //Mi implementacion de grafos, el codigo inicialmente lo hi
     }
 
     public void BFS(NodoGrafo nodoInicial, ArbolBST arbol) {
-        ColaPrioridad priorityQueue = new ColaPrioridad();
-        priorityQueue.pushMinHeap(nodoInicial);
+        Queue cola = new LinkedList();
+        cola.add(nodoInicial);
         for (NodoGrafo node : nodos) {
             node.startBFS();
         }
@@ -100,15 +102,15 @@ public class Grafo { //Mi implementacion de grafos, el codigo inicialmente lo hi
         int dato = Integer.parseInt(nodoInicial.getInfo());
         NodoBST nodoBST = arbol.getNodo(arbol.getRaiz(), dato);
         dibujarCamino(nodoBST); //Pintar el nodo inicial
-        while (priorityQueue.Count() != 0) {
-            NodoGrafo nodoActual = priorityQueue.removeMinHeap();
+        while (!cola.isEmpty()) {
+            NodoGrafo nodoActual = (NodoGrafo)cola.poll();
             nodoActual.setIsVisited(true);
             for (AristaGrafo arista : nodoActual.getAristasAdj()) {
                 NodoGrafo nodoAdj = arista.getNodoFinal();
                 if (!nodoAdj.getIsDiscovered()) {
                     calculateDistance(nodoActual, nodoAdj);
                     nodoAdj.setIsDiscovered(true);
-                    priorityQueue.pushMinHeap(nodoAdj);
+                    cola.add(nodoAdj);
                     dato = Integer.parseInt(nodoAdj.getInfo());
                     nodoBST = arbol.getNodo(arbol.getRaiz(), dato);
                     dibujarCamino(nodoBST); //Pintar hijos del nodo actual
